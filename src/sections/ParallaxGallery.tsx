@@ -18,7 +18,6 @@ const ParallaxGallery = () => {
 
   const [selectedProyecto, setSelectedProyecto] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loadingImages, setLoadingImages] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const parallaxContainerRef = useRef<HTMLDivElement>(null);
@@ -70,7 +69,6 @@ const ParallaxGallery = () => {
   };
 
   const openServiceModal = async (service: any) => {
-    setLoadingImages(true);
     const folderName = getFolderName(service.title);
     const galleryImages = await loadImagesFromFolder(folderName);
 
@@ -90,7 +88,6 @@ const ParallaxGallery = () => {
 
     setSelectedProyecto(proyectoEnriquecido);
     setIsModalOpen(true);
-    setLoadingImages(false);
   };
 
   const closeModal = () => {

@@ -17,7 +17,7 @@ const clientesLogos = [
 const CarruselSpotlight = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-    const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+    const autoPlayRef = useRef<number | null>(null);
 
     const totalItems = clientesLogos.length;
 
