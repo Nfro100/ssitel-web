@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 50% 15%;
+    --foreground: 0 0% 100%;
+    --card: 220 50% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 50% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 220 60% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 40% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 30% 25%;
+    --muted-foreground: 220 30% 70%;
+    --accent: 220 60% 35%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 30% 25%;
+    --input: 220 30% 25%;
+    --ring: 220 60% 35%;
+    --radius: 0.5rem;
+    
+    /* SSITEL Brand Colors - Azul Marino Institucional */
+    --ssitel-blue: #1e3a5f;
+    --ssitel-blue-dark: #152a45;
+    --ssitel-blue-light: #2a4a73;
+    --ssitel-cyan: #00b4d8;
+    --ssitel-white: #ffffff;
+    --ssitel-gray: #e5e7eb;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+  body {
+    @apply text-white antialiased;
+    background: linear-gradient(135deg, #152a45 0%, #1e3a5f 50%, #0f1f35 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+}
+
+/* Custom font classes */
+.font-display {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-mono-custom {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+}
+
+/* Text decode effect */
+.decode-text {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Vinyl spin animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 6s linear infinite;
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+.glitch-effect {
+  animation: glitch 0.3s ease-in-out infinite;
+}
+
+/* Gradient text - SSITEL Brand */
+.gradient-text {
+  background: linear-gradient(135deg, #00b4d8 0%, #4da6ff 50%, #7dd3fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects - SSITEL Cyan */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.4),
+              0 0 40px rgba(0, 180, 216, 0.3),
+              0 0 60px rgba(0, 180, 216, 0.2);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 180, 216, 0.6),
+               0 0 20px rgba(0, 180, 216, 0.4),
+               0 0 30px rgba(0, 180, 216, 0.3);
+}
+
+/* SSITEL Blue Glow */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(30, 58, 95, 0.5),
+              0 0 40px rgba(30, 58, 95, 0.3),
+              0 0 60px rgba(30, 58, 95, 0.2);
+}
+
+/* Blur mask for cube section */
+.blur-mask {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Video overlay - SSITEL Colors */
+.video-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(21, 42, 69, 0.3) 0%,
+    rgba(30, 58, 95, 0.6) 50%,
+    rgba(15, 31, 53, 0.95) 100%
+  );
+}
+
+/* Navigation pill - SSITEL Style */
+.nav-pill {
+  background: rgba(30, 58, 95, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.nav-pill:hover {
+  background: rgba(30, 58, 95, 0.8);
+  border-color: rgba(0, 180, 216, 0.4);
+}
+
+/* Scrollbar styling - SSITEL */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #152a45;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 180, 216, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 180, 216, 0.6);
+}
+
+/* Section transitions */
+.section-transition {
+  transition: background-color 0.6s ease-out;
+}
+
+/* Image hover effect */
+.image-hover-scale {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Canvas container */
+.canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Three.js canvas fix */
+canvas {
+  display: block;
+}
+
+/* Speed blur text effect */
+.speed-blur {
+  transition: filter 0.1s ease-out, letter-spacing 0.1s ease-out, transform 0.1s ease-out;
+}
+
+/* Tour section - SSITEL Background */
+.tour-bg {
+  background: linear-gradient(135deg, #152a45 0%, #1e3a5f 50%, #0f1f35 100%);
+}
+
+/* List item hover state */
+.tour-item {
+  transition: all 0.3s ease;
+}
+
+.tour-item:hover {
+  background: rgba(0, 180, 216, 0.1);
+}
+
+/* Footer grid item */
+.footer-grid-item {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-grid-item:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* SSITEL Logo Container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-container img {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 10px rgba(0, 180, 216, 0.3));
+}
+
+/* Hero background with particles effect */
+.hero-bg {
+  background: 
+    radial-gradient(ellipse at top, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+    linear-gradient(135deg, #152a45 0%, #1e3a5f 50%, #0f1f35 100%);
+}
+
+/* Service card styling */
+.service-card {
+  background: rgba(30, 58, 95, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  background: rgba(30, 58, 95, 0.6);
+  border-color: rgba(0, 180, 216, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 180, 216, 0.2);
+}
+
+/* Client badge */
+.client-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.client-badge:hover {
+  background: rgba(0, 180, 216, 0.2);
+  border-color: rgba(0, 180, 216, 0.5);
+}
