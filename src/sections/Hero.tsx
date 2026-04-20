@@ -134,7 +134,7 @@ const Hero = () => {
         {/* Logo posicionado absolutamente, más abajo */}
         <div
           ref={logoRef}
-          className="absolute left-1/2 -translate-x-1/2 top-[10%] md:top-[8%] z-20"
+          className="absolute inset-x-0 top-[10%] md:top-[8%] z-20 flex justify-center"
         >
           <img
             src="/logo-ssitel-white.png"
