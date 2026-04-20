@@ -43,25 +43,25 @@ const ParallaxGallery = () => {
     return mapping[title] || title.toLowerCase().replace(/ /g, '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
-  // Cargar imágenes desde la carpeta correspondiente
   const loadImagesFromFolder = async (folderName: string): Promise<string[]> => {
     const imagenes: string[] = [];
-    const maxFiles = 30;
+    const maxFiles = 12;
     const extensions = ['jpg', 'jpeg', 'png', 'webp'];
 
     for (let i = 1; i <= maxFiles; i++) {
       for (const ext of extensions) {
         const imgPath = `/capacidad/${folderName}/${i}.${ext}`;
-        const exists = await new Promise<boolean>((resolve) => {
-          const img = new Image();
-          img.onload = () => resolve(true);
-          img.onerror = () => resolve(false);
-          img.src = imgPath;
-          setTimeout(() => resolve(false), 1000);
-        });
-        if (exists) {
-          imagenes.push(imgPath);
-          break;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 300);
+        try {
+          const res = await fetch(imgPath, { method: 'HEAD', signal: controller.signal });
+          clearTimeout(timeoutId);
+          if (res.ok) {
+            imagenes.push(imgPath);
+            break;
+          }
+        } catch {
+          clearTimeout(timeoutId);
         }
       }
     }

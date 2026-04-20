@@ -80,39 +80,26 @@ const TourSchedule = () => {
 
   const loadImages = async (folderName: string): Promise<string[]> => {
     const imagenes: string[] = [];
-    const maxFiles = 30;
+    const maxFiles = 12;
     const extensions = ['jpg', 'jpeg', 'png', 'webp'];
 
     for (let i = 1; i <= maxFiles; i++) {
       for (const ext of extensions) {
         const imgPath = `/capacidad/${folderName}/${i}.${ext}`;
-        console.log(`Probando: ${imgPath}`);
-
-        const exists = await new Promise<boolean>((resolve) => {
-          const img = new Image();
-          img.onload = () => {
-            console.log(`✅ Existe: ${imgPath}`);
-            resolve(true);
-          };
-          img.onerror = () => {
-            console.log(`❌ No existe: ${imgPath}`);
-            resolve(false);
-          };
-          img.src = imgPath;
-          setTimeout(() => {
-            console.log(`⏱️ Timeout: ${imgPath}`);
-            resolve(false);
-          }, 2000);
-        });
-
-        if (exists) {
-          imagenes.push(imgPath);
-          break; // pasa al siguiente número
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 300);
+        try {
+          const res = await fetch(imgPath, { method: 'HEAD', signal: controller.signal });
+          clearTimeout(timeoutId);
+          if (res.ok) {
+            imagenes.push(imgPath);
+            break;
+          }
+        } catch {
+          clearTimeout(timeoutId);
         }
       }
     }
-
-    console.log(`📦 Total encontradas en ${folderName}:`, imagenes);
     return imagenes;
   };
 
