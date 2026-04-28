@@ -164,7 +164,7 @@ const Hero = () => {
 
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00b4d8]/40 to-transparent" />
-      <div className="absolute top-8 right-8 text-right">
+      <div className="absolute bottom-8 left-8 text-left">
         <p className="font-mono-custom text-xs text-white/40 uppercase tracking-wider">{heroConfig.cornerLabel}</p>
         <p className="font-mono-custom text-xs text-[#00b4d8]/70">{heroConfig.cornerDetail}</p>
       </div>
