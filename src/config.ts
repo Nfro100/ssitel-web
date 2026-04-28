@@ -357,10 +357,10 @@ export const footerConfig: FooterConfig = {
     { icon: "youtube", label: "YouTube", href: "#" },
   ],
   galleryImages: [
-    { id: 1, src: "/servicio-1.jpg" },
-    { id: 2, src: "/servicio-2.jpg" },
-    { id: 3, src: "/servicio-3.jpg" },
-    { id: 4, src: "/servicio-4.jpg" },
+    { id: 1, src: "/servicio-7.jpg" },
+    { id: 2, src: "/servicio-8.jpg" },
+    { id: 3, src: "/servicio-9.jpg" },
+    { id: 4, src: "/servicio-10.jpg" },
   ],
 };
 
